@@ -28,8 +28,8 @@ This repository contains code that enables you to run inference using large lang
 2. Install the required packages:
     ```bash
     pip install torch transformers
-
-3. Prepare your prompts:
+## Usage
+1. Prepare your prompts:
    ```python
    TEXTS = {
     'note': [
@@ -40,16 +40,16 @@ This repository contains code that enables you to run inference using large lang
     ],
     'label': [1, 2, 3, 4]
     }
-4. Set the maximum number of new tokens to generate and the model name:
+2. Set the maximum number of new tokens to generate and the model name:
    ```python
    maxnewtokens = 200
-    model_name = "Arash8248/Mistral-7B-Instruct-v0.3-4bit-GPTQ"
-5. Initialize the tokenizer and models on available GPUs:
+   model_name = "Arash8248/Mistral-7B-Instruct-v0.3-4bit-GPTQ"
+3. Initialize the tokenizer and models on available GPUs:
     ```python
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     devices = [f"cuda:{i}" for i in range(torch.cuda.device_count())]
     models = [AutoModelForCausalLM.from_pretrained(model_name).to(device) for device in devices]
-6. Run the parallel inference:
+4. Run the parallel inference:
     ```python
    from concurrent.futures import ThreadPoolExecutor
     import torch
