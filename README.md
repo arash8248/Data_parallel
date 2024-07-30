@@ -54,20 +54,6 @@ This repository contains code that enables you to run inference using large lang
    from concurrent.futures import ThreadPoolExecutor
     import torch
 
-    def inference(prompt, tokenizer, model, device, maxnewtokens):
-    inputs = tokenizer.encode(prompt, return_tensors="pt").to(device)
-    with torch.no_grad():
-        outputs = model.generate(inputs, max_new_tokens=maxnewtokens)
-    return outputs
-
-    def process_prompt(args):
-    prompt, model, device, input_idx, maxnewtokens, tokenizer = args
-    print(input_idx)
-    output = inference(prompt, tokenizer, model, device, maxnewtokens)
-    torch.cuda.set_device(device)
-    torch.cuda.empty_cache()
-    return input_idx, output
-
     with ThreadPoolExecutor(max_workers=len(devices)) as executor:
     futures = [
         executor.submit(process_prompt, (prompt, models[int(device.split(':')[1])], device, idx, maxnewtokens, tokenizer))
