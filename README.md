@@ -1,6 +1,6 @@
 # Data Parallel Inference for Large Language Models
 
-A hassle-free data parallel code (ideal for inference) to load LLMS and run them on multiple GPUs concurrently without multiple class definitions.
+A hassle-free data parallel code in less than 50 lines (ideal for inference) to load LLMS and run them on multiple GPUs concurrently without complicated class definitions.
 
 ## Table of Contents
 - [Overview](#overview)
