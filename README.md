@@ -23,7 +23,7 @@ This repository contains code that enables you to run inference using large lang
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/parallel-llm-inference.git
+   git clone https://github.com/arash8248/data_parallel.git
    cd parallel-llm-inference
 2. Install the required packages:
     ```bash
